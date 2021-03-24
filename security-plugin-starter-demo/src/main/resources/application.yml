@@ -1,0 +1,10 @@
+logging:
+  level:
+    root: INFO
+
+com:
+  gotz9:
+    security:
+      web:
+        permitted-uri:
+          - "/index"
