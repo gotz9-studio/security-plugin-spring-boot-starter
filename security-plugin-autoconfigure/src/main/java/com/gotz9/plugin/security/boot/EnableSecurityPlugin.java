@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({SecurityPluginConfiguration.class})
+@Import({SecurityPluginRegister.class})
 public @interface EnableSecurityPlugin {
 }
