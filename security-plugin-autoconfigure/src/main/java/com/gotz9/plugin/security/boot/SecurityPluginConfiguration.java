@@ -11,12 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @ConditionalOnClass(EnableSecurityPlugin.class)
-@EnableConfigurationProperties(WebSecurityPluginProperties.class)
 public class SecurityPluginConfiguration {
 
     @Configuration
     @ConditionalOnClass(WebSecurityConfiguration.class)
     @ConditionalOnMissingBean(WebSecurityPluginConfigurerAdapter.class)
+    @EnableConfigurationProperties(WebSecurityPluginProperties.class)
     @EnableWebSecurity
     static class DefaultWebSecurityPluginConfiguration extends WebSecurityPluginConfigurerAdapter {
 
