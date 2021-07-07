@@ -1,6 +1,6 @@
 package com.gotz9.plugin.security.boot.method;
 
-import com.gotz9.plugin.security.core.access.voter.AccessDecisionManagerProxyVoter;
+import com.gotz9.plugin.security.core.access.proxy.AccessDecisionManagerProxyVoter;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.vote.UnanimousBased;
