@@ -1,4 +1,4 @@
-package com.gotz9.plugin.security.core.access.proxy;
+package com.gotz9.plugin.security.core.access;
 
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDecisionVoter;
