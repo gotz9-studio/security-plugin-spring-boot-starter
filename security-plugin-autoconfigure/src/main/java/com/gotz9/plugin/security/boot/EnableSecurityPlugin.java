@@ -11,4 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Import({SecurityPluginRegister.class})
 public @interface EnableSecurityPlugin {
+
+    boolean enableStorage() default false;
+
 }
