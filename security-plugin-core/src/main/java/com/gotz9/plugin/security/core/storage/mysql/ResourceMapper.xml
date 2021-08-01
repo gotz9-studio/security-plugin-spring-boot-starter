@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gotz9.plugin.security.core.storage.ResourceMapper">
+
+    <select id="selectUserByUsername" resultType="com.gotz9.plugin.security.core.subject.SysUser">
+        SELECT ssu.*
+        FROM sys_security_user ssu
+        WHERE username = #{username}
+    </select>
+
+    <select id="loadRoleByUserId" resultType="com.gotz9.plugin.security.core.subject.SysRole">
+        SELECT ssr.*
+        FROM sys_security_user_role ssur,
+             sys_security_role ssr
+        WHERE ssur.uid = #{id}
+          AND ssr.id = ssur.rid
+    </select>
+
+    <select id="loadPermissionByUserId" resultType="com.gotz9.plugin.security.core.subject.SysPermission">
+        SELECT DISTINCT ssp.*
+        FROM sys_security_user_role ssur,
+             sys_security_role_permission ssrp,
+             sys_security_permission ssp
+        WHERE ssur.uid = #{id}
+          AND ssrp.rid = ssur.rid
+          AND ssp.id = ssrp.pid
+    </select>
+
+    <select id="loadMenuByUserId" resultType="com.gotz9.plugin.security.core.subject.SysMenu">
+        SELECT DISTINCT ssm.*
+        FROM sys_security_user_role ssur,
+             sys_security_role_menu ssrm,
+             sys_security_menu ssm
+        WHERE ssur.uid = #{id}
+          AND ssrm.rid = ssur.rid
+          AND ssp.id = ssrm.mid
+    </select>
+
+</mapper>
