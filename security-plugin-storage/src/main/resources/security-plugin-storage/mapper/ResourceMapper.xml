@@ -33,7 +33,7 @@
              sys_security_menu ssm
         WHERE ssur.uid = #{id}
           AND ssrm.rid = ssur.rid
-          AND ssp.id = ssrm.mid
+          AND ssm.id = ssrm.mid
     </select>
 
 </mapper>

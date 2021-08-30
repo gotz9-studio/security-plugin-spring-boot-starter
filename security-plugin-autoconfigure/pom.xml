@@ -12,6 +12,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <security-plugin-core.version>0.1.0</security-plugin-core.version>
+        <security-plugin-storage.version>0.1.0</security-plugin-storage.version>
     </properties>
 
     <dependencyManagement>
@@ -66,6 +67,12 @@
             <groupId>com.gotz9.plugin</groupId>
             <artifactId>security-plugin-core</artifactId>
             <version>${security-plugin-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gotz9</groupId>
+            <artifactId>security-plugin-storage</artifactId>
+            <version>${security-plugin-storage.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
