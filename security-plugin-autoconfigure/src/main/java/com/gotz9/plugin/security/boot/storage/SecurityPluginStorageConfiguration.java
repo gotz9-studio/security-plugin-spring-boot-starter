@@ -1,15 +1,18 @@
 package com.gotz9.plugin.security.boot.storage;
 
+import com.gotz9.plugin.security.core.auth.DatabaseUserDetailsService;
+import com.gotz9.plugin.security.core.storage.ResourceMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.sql.DataSource;
 
-@MapperScan(value = "com.github.gotz9.security.core.storage", sqlSessionFactoryRef = SecurityPluginStorageConfiguration.SECURITY_SQL_SESSION_FACTORY)
+@MapperScan(value = "com.gotz9.plugin.security.core.storage", sqlSessionFactoryRef = SecurityPluginStorageConfiguration.SECURITY_SQL_SESSION_FACTORY)
 public class SecurityPluginStorageConfiguration {
 
     public static final String SECURITY_SQL_SESSION_FACTORY = "SECURITY_SQL_SESSION_FACTORY";
@@ -21,9 +24,14 @@ public class SecurityPluginStorageConfiguration {
         factory.setDataSource(dataSource);
         factory.setMapperLocations(
                 new PathMatchingResourcePatternResolver()
-                        .getResources("classpath*:com/gotz9/plugin/security/core/storage/mysql/*.xml"));
+                        .getResources("classpath*:security-plugin-storage/mapper/*.xml"));
 
         return factory.getObject();
+    }
+
+    @Bean
+    protected UserDetailsService userDetailsService(ResourceMapper resourceMapper) {
+        return new DatabaseUserDetailsService(resourceMapper);
     }
 
 }
