@@ -21,17 +21,27 @@ public abstract class WebSecurityPluginConfigurerAdapter extends WebSecurityConf
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        configPermittedUri(http);
+
+        configHttpSecurity(http);
+    }
+
+    private void configPermittedUri(HttpSecurity http) throws Exception {
         Collection<String> permittedUri = permittedUri();
 
-        // todo: check permittedUri instance
-
-        if (permittedUri.size() > 0) {
+        if (permittedUri != null && permittedUri.size() > 0) {
             http.authorizeRequests()
                     .antMatchers(permittedUri.toArray(new String[0])).permitAll();
         }
 
         http.authorizeRequests()
                 .anyRequest().authenticated();
+    }
+
+    /**
+     * 在一些基础配置之后调用, 对 HttpSecurity 进行配置, 承接 {@link #configure(HttpSecurity)}.
+     */
+    protected void configHttpSecurity(HttpSecurity http) throws Exception {
     }
 
 }
