@@ -1,6 +1,5 @@
 package com.gotz9.plugin.security.boot.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -16,6 +15,11 @@ public abstract class WebSecurityPluginConfigurerAdapter extends WebSecurityConf
         this.properties = properties;
     }
 
+    /**
+     * 获取允许访问的 uri
+     *
+     * @return null 或 uri string
+     */
     protected Collection<String> permittedUri() {
         return properties.getPermittedUri().stream()
                 .filter(s -> Objects.nonNull(s) && !"".equals(s))
