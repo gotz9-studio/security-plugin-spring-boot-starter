@@ -24,6 +24,10 @@ public class SecurityPluginConfiguration {
     @EnableWebSecurity
     static class DefaultWebSecurityPluginConfiguration extends WebSecurityPluginConfigurerAdapter {
 
+        DefaultWebSecurityPluginConfiguration(WebSecurityPluginProperties properties) {
+            super(properties);
+        }
+
     }
 
     @Configuration

@@ -10,8 +10,11 @@ import java.util.stream.Collectors;
 
 public abstract class WebSecurityPluginConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    protected WebSecurityPluginProperties properties;
+    protected final WebSecurityPluginProperties properties;
+
+    protected WebSecurityPluginConfigurerAdapter(WebSecurityPluginProperties properties) {
+        this.properties = properties;
+    }
 
     protected Collection<String> permittedUri() {
         return properties.getPermittedUri().stream()
