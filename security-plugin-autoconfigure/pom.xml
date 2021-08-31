@@ -24,13 +24,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot</artifactId>
-                <version>2.1.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -52,14 +45,6 @@
             <artifactId>spring-security-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
         </dependency>
@@ -72,7 +57,11 @@
             <groupId>com.github.gotz9</groupId>
             <artifactId>security-plugin-storage</artifactId>
             <version>${security-plugin-storage.version}</version>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gotz9.plugin</groupId>
+            <artifactId>security-plugin-storage-autoconfigure</artifactId>
+            <version>0.1.0</version>
         </dependency>
     </dependencies>
 
