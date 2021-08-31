@@ -10,6 +10,7 @@ import org.springframework.security.access.annotation.SecuredAnnotationSecurityM
 import org.springframework.security.access.method.MethodSecurityMetadataSource;
 import org.springframework.security.access.vote.UnanimousBased;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +18,10 @@ import java.util.List;
 @Configuration
 @EnableGlobalMethodSecurity
 public class MethodSecurityConfiguration extends MethodSecurityPluginConfiguration {
+
+    public MethodSecurityConfiguration(UserDetailsService userDetailsService) {
+        super(userDetailsService);
+    }
 
     @Override
     protected AccessDecisionManager accessDecisionManager() {

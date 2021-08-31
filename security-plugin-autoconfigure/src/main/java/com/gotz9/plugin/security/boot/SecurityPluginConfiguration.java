@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @ConditionalOnClass(EnableSecurityPlugin.class)
@@ -36,6 +37,10 @@ public class SecurityPluginConfiguration {
     @EnableConfigurationProperties(MethodSecurityPluginProperties.class)
     @EnableGlobalMethodSecurity(prePostEnabled = true)
     static class DefaultMethodSecurityPluginConfiguration extends MethodSecurityPluginConfiguration {
+
+        DefaultMethodSecurityPluginConfiguration(UserDetailsService userDetailsService) {
+            super(userDetailsService);
+        }
 
     }
 

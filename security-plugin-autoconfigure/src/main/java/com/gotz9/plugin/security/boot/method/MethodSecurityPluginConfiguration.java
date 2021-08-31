@@ -17,6 +17,12 @@ import java.util.List;
 
 public abstract class MethodSecurityPluginConfiguration extends GlobalMethodSecurityConfiguration {
 
+    private final UserDetailsService userDetailsService;
+
+    protected MethodSecurityPluginConfiguration(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
     protected List<? extends AccessDecisionVoter<?>> customVoters() {
         return Collections.emptyList();
     }
@@ -33,9 +39,6 @@ public abstract class MethodSecurityPluginConfiguration extends GlobalMethodSecu
 
         return new UnanimousBased(decisionVoters);
     }
-
-    @Autowired
-    private UserDetailsService userDetailsService;
 
     /**
      * Sub classes can override this method to register different types of authentication.
