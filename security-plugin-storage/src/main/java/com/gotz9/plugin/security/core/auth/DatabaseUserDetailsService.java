@@ -1,6 +1,6 @@
 package com.gotz9.plugin.security.core.auth;
 
-import com.gotz9.plugin.security.core.storage.ResourceMapper;
+import com.gotz9.plugin.security.core.storage.UserResourceRepository;
 import com.gotz9.plugin.security.core.subject.SysMenu;
 import com.gotz9.plugin.security.core.subject.SysPermission;
 import com.gotz9.plugin.security.core.subject.SysRole;
@@ -16,9 +16,9 @@ import java.util.stream.Stream;
 
 public class DatabaseUserDetailsService implements UserDetailsService {
 
-    private final ResourceMapper resourceMapper;
+    private final UserResourceRepository resourceMapper;
 
-    public DatabaseUserDetailsService(ResourceMapper resourceMapper) {
+    public DatabaseUserDetailsService(UserResourceRepository resourceMapper) {
         this.resourceMapper = resourceMapper;
     }
 

@@ -1,7 +1,7 @@
 package com.gotz9.plugin.security.boot.storage;
 
 import com.gotz9.plugin.security.core.auth.DatabaseUserDetailsService;
-import com.gotz9.plugin.security.core.storage.ResourceMapper;
+import com.gotz9.plugin.security.core.storage.UserResourceRepository;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -30,7 +30,7 @@ public class SecurityPluginStorageConfiguration {
     }
 
     @Bean
-    protected UserDetailsService userDetailsService(ResourceMapper resourceMapper) {
+    protected UserDetailsService userDetailsService(UserResourceRepository resourceMapper) {
         return new DatabaseUserDetailsService(resourceMapper);
     }
 

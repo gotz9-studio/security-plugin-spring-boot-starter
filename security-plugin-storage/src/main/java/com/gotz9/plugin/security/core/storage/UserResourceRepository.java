@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.Set;
 
 @Mapper
-public interface ResourceMapper {
+public interface UserResourceRepository {
 
     SysUser selectUserByUsername(String username);
 
